@@ -3,8 +3,8 @@ const recordButton = document.querySelector(".record-button");
 const stopButton = document.querySelector(".stop-button");
 const playButton = document.querySelector(".play-button");
 const downloadButton = document.querySelector(".download-button");
-const previewPlayer = document.querySelector(".preview");
-const recordingPlayer = document.querySelector(".recording");
+const previewPlayer = document.querySelector("#preview");
+const recordingPlayer = document.querySelector("#recording");
 
 let recorder;
 let recordedChunks;
@@ -34,7 +34,7 @@ function stopRecording() {
 function playRecording() {
   const recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
   recordingPlayer.src = URL.createObjectURL(recordedBlob);
-  recordingPlayer.playButton();
+  recordingPlayer.play();
   downloadButton.href = recordingPlayer.src;
   downloadButton.download = `recording_${new Date()}.webm`;
 }
